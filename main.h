@@ -18,7 +18,6 @@ extern void Mode_3( void );
 extern void Mode_4( void );
 extern void button( void );
 
-extern bool Eeprom_rw( bool read_write );
 
 enum{
 	MODE_NONE,

@@ -248,23 +248,3 @@ void button( void )
 	}
 	Smalltask_rerun(TASK_button, TIME_BUTTON);
 }
-
-bool Eeprom_rw( bool n_read_write )
-{
-	if (n_read_write)
-	{
-//		eeprom_write_word( &EE_Uout_FS , Uout_FS);
-//		eeprom_write_word( &EE_Iout_FS , Iout_FS);
-//		eeprom_write_word( &EE_Temperture_FS , Temperture_FS);
-		return true;
-
-	}
-	else
-	{
-//		Uout_FS = eeprom_read_word( &EE_Uout_FS );
-//		Iout_FS = eeprom_read_word( &EE_Iout_FS );
-//		Temperture_FS = eeprom_read_word( &EE_Temperture_FS );
-		return false;
-	}
-	return false;
-}
