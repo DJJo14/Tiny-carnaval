@@ -45,10 +45,11 @@ Night rider, een lopend lichtje van links naar recht en weer terug.
 ## Mode2
 Om en om. uitgang 0 en 2 en daarna 1 en 3.
 ## Mode 3
-als in de brand weer in filmpje : https://www.youtube.com/watch?v=yBFLlOy_Ofc
-uitgang 0 en 1, zijn de zwaailichten boven op.
-uitgang 2 zijn de koplichten
-uitgang 3 zijn de blauwe lichten voor op
+Zwaailichten net als de brandweer in dit filmpje : https://www.youtube.com/watch?v=yBFLlOy_Ofc
+
+-	uitgang 0 en 1, zijn de zwaailichten boven op.
+-	uitgang 2 zijn de koplichten
+-	uitgang 3 zijn de blauwe lichten voor op
 ## Mode 4
 Dobbelsteen, door op het knopje de drukken zal de dobbelsteen gaan rollen. de wilekurigheid wordt bepaalt door de tijd dat het knopje ingedrukt word.
 zet de lampen neer zo als hieronder, alle aansluitingen behalve 0, hebben twee lampen. (het nummer kon overeen met het aansluitingsnummer)
@@ -65,6 +66,7 @@ Bij
 -	4 gaat 1 en 2 aan.
 -	5 gaat 0, 1 en 2 aan.
 -	6 gaat 1, 2, en 3 aan.
+
 Met dank aan zakkemble voor inspiratie, deze is in het klein, maar dit kan ook heel groot.
 http://blog.zakkemble.net/a-tiny-electronic-dice/
 
