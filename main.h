@@ -17,8 +17,10 @@ extern void toggle( void );
 extern bool Eeprom_rw( bool read_write );
 
 enum{
+	MODE_NONE,
 	MODE_1_NIGHTRIDER,
 	MODE_2_OM_EN_OM,
+	MODE_3_BRANDWEER,
 
 };
 

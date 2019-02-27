@@ -11,9 +11,12 @@
 // Definitions
 //==========================================================================================
 #define SMALLTASK_TASK \
+TASK( button ) \
 TASK( Mode_1 ) \
 TASK( Mode_2 ) \
 TASK( Mode_3 ) \
+
+
 
 
 

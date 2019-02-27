@@ -32,7 +32,7 @@
 //==========================================================================================
 // Global Values
 //==========================================================================================
-
+uint8_t mode = 3;
 uint16_t EEMEM EE_Temperture_FS = 1024;
 uint16_t EEMEM EE_Uout_FS = 1024;
 uint16_t EEMEM EE_Iout_FS = 1024;
@@ -47,7 +47,7 @@ uint16_t EEMEM EE_Iout_FS = 1024;
 static void init( void )
 {
 	DDRB = SYSTEM_DDR;
-	PORTB = 0;
+	PORTB = (1<<DDB4);
 	Eeprom_rw(false);
 	Smalltask_init();
 	sei();	// __enable_interrupt();
@@ -62,9 +62,10 @@ static void init( void )
 int main(void)
 {
 	init();
-//	Smalltask_rerun(TASK_Mode_1, 500);
+//	Smalltask_rerun(TASK_button, 10);
+	Smalltask_rerun(mode, 500);
 //	Smalltask_rerun(TASK_Mode_2, 500);
-	Smalltask_rerun(TASK_Mode_3, 100);
+//	Smalltask_rerun(TASK_Mode_3, 100);
 
 	while(1)
 	{
@@ -87,22 +88,17 @@ void Mode_1( void )
 	case  1:
 	case  2:
 	case  3:
-	case  4:
-	case  5:
 		PORTB = (PORTB<<1);
 		break;
-	case  6:
-	case  7:
-	case  8:
-	case  9:
-	case  10:
+	case  4:
+	case  5:
 		PORTB = PORTB>>1;
 		break;
 	default:
 		PORTB = (1<<PORTB0);
-		i = 0;
+		i = 1;
 	}
-	Smalltask_rerun(TASK_Mode_1, 500);
+	Smalltask_rerun(mode, 500);
 }
 
 void Mode_2( void )
@@ -111,16 +107,13 @@ void Mode_2( void )
 	switch(i++)
 	{
 	case 0:
-		PORTB = (1<<PORTB2) | (1<<PORTB0);
-		break;
-	case  1:
 		PORTB = (1<<PORTB3) | (1<<PORTB1);
 		break;
 	default:
 		PORTB = (1<<PORTB2) | (1<<PORTB0);
 		i = 0;
 	}
-	Smalltask_rerun(TASK_Mode_2, 500);
+	Smalltask_rerun(mode, 500);
 }
 
 void Mode_3( void )
@@ -147,16 +140,61 @@ void Mode_3( void )
 		PORTB ^= (1<<PORTB1);
 		PORTB ^=  (1<<PORTB3);
 		break;
-	case  10:
-	case  11:
-		break;
+//	case  10:
+//	case  11:
+//		break;
 	default:
 		PORTB &= ~((1<<PORTB0) |  (1<<PORTB1));
 
 		i = 0;
 		break;
 	}
-	Smalltask_rerun(TASK_Mode_3, 100);
+	Smalltask_rerun(mode, 100);
+}
+
+void button( void )
+{
+	static uint8_t i = 0;
+
+	if ( ~(PINB & (1<<DDB4)) )
+	{
+		PORTB |= (1<<PORTB1);
+	}
+	else
+	{
+		PORTB &= ~(1<<PORTB1);
+	}
+
+
+	if ( ~(PINB & (1<<DDB4)) && i == 0)
+	{
+		i++;
+
+
+	}
+	else if ( ~(PINB & (1<<DDB4)))
+	{
+		if ( i < 60)
+		{
+			i++;
+//
+
+		}
+	}
+	else if ( (PINB & (1<<DDB4)) && i > 50 )
+	{
+
+		if ( mode <= 3)
+			mode++;
+		else
+			mode = 1;
+		i = 49;
+	}
+	else if (i)
+	{
+		i--;
+	}
+	Smalltask_rerun(TASK_button, 10);
 }
 
 bool Eeprom_rw( bool n_read_write )
