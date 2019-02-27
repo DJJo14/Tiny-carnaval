@@ -12,8 +12,12 @@
 
 #define F_CPU 16000000UL
 
-extern bool sw(bool s);
-extern void toggle( void );
+extern void Mode_1( void );
+extern void Mode_2( void );
+extern void Mode_3( void );
+extern void Mode_4( void );
+extern void button( void );
+
 extern bool Eeprom_rw( bool read_write );
 
 enum{
@@ -21,6 +25,8 @@ enum{
 	MODE_1_NIGHTRIDER,
 	MODE_2_OM_EN_OM,
 	MODE_3_BRANDWEER,
+	MODE_4_DOBBELSTEEN,
+	MODE_COUNT,
 
 };
 

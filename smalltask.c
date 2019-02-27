@@ -124,6 +124,11 @@ void Smalltask_dispatch( void )
 	}
 }
 
+void Smalltask_cancel_task(uint8_t task)
+{
+	Smalltask_Value[task].check = true;
+}
+
 void Smalltask_rerun(uint8_t task, uint16_t time)
 {
 	Smalltask_Value[task].use_counter = true;

@@ -15,7 +15,7 @@ TASK( button ) \
 TASK( Mode_1 ) \
 TASK( Mode_2 ) \
 TASK( Mode_3 ) \
-
+TASK( Mode_4 ) \
 
 
 
@@ -57,6 +57,7 @@ extern uint8_t Smalltask_timernext;
 //==========================================================================================
 extern void Smalltask_init( void );
 extern void Smalltask_dispatch( void );
+extern void Smalltask_cancel_task(uint8_t task);
 extern void Smalltask_rerun(uint8_t task, uint16_t time);
 extern void Smalltask_setfunc(uint8_t task, bool (*func)( void ));
 
